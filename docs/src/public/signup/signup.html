@@ -1,0 +1,60 @@
+<fieldset class="text-center">
+    <legend style="color:rgb(233, 211, 15);">Sign Up</legend>
+    <form name='signUpForm' novalidate>
+      First Name:
+      <input type="text" style="color:black;" name="firstname" placeholder="First Name"
+      ng-model="$ctrl.firstName"
+      required>
+      <span 
+          ng-if="signUpForm.firstname.$error.required && signUpForm.firstname.$touched">
+          First name is required.
+      </span>
+      <br>     
+
+      Last Name:
+      <input type="text" style="color:black;" name="lastname" placeholder="Last  Name"
+        ng-model="$ctrl.lastName"
+        required>
+        <span
+          ng-if="signUpForm.lastname.$error.required && signUpForm.lastname.$touched">
+          Last name is required
+        </span>
+        <br>
+
+        Email Address:
+      <input type="email" style="color:black;" name="email" placeholder="Email"
+        ng-model="$ctrl.address"
+        required>
+        <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+        <br>
+
+        Phone Number:
+      <input type="text" style="color:black;" name="phone" placeholder="Phone ###-###-####"
+        ng-model="$ctrl.phone"
+        pattern="(\d{3})-(\d{3})-(\d{4})">
+        <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
+        <br>
+
+        Menu Number of Favorite Dish:
+        <input type="text" style="color:black;" name="dishnumber" placeholder="Favoarite Dish"
+          ng-model="$ctrl.favorate"
+          required>
+          <span ng-if="signUpForm.dishnumber.$invalid && signUpForm.dishnumber.$touched">
+            Dish number is required.
+          </span>
+          <br>
+
+      <button
+      ng-disabled="signUpForm.$invalid"
+        ng-click="$ctrl.submit();">Submit</button>
+        
+        <div style="margin-top: 10px;">
+        </div>
+        <div ng-if="$ctrl.valid">Your information has been saved</div>
+        <div ng-if="$ctrl.notFound">No such menu number exists</div>
+    </form>
+  </fieldset>
